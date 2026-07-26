@@ -364,6 +364,7 @@ button:active {
     height: 50px;
     background-color: rgba(0, 0, 0, 0.4);
     border: 2px solid white;
+    padding: 1px 4px 1px 4px;
     border-radius: 10%;
     font-size: 16px;
     color: white; 
