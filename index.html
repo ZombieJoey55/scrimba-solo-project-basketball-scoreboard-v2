@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scoreboard</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- text 1 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="main_container">
+        <!-- New Game -->
+        <div id="new_game_container">
+            <button id="new_game_btn" class="montserrat_extrabold" onclick="new_game()"
+                aria-label="Start a new game and reset all scores, stats, and timer">
+                <span class="btn_header">New Game</span>
+            </button>
+        </div>
+        <!-- Team Names -->
+        <div id="name_container">
+            <div id="name_home_container" class="name_container">
+                <img src="./images/arsenal_badge.webp" class="team_badge" alt="Arsenal badge">
+                <h3 class="name_header montserrat_extrabold">Arsenal</h3>
+            </div>
+            <div id="name_away_container" class="name_container">
+                <h3 class="name_header montserrat_extrabold">Man Utd</h3>
+                <img src="./images/man_utd_badge.webp" class="team_badge" alt="Manchester United badge">
+            </div>
+        </div>
+        <!-- Score Names -->
+        <div id="score_container">
+            <div id="score_home_container" class="score_container montserrat_extrabold">
+                <button class="score_btn montserrat_extrabold" onclick="decrement_home_1()"
+                    aria-label="Subtract 1 point from Home score">-1</button>
+                <h3 id="score_home_num" class="score_header montserrat_extrabold" aria-live="polite" aria-atomic="true">
+                    0</h3>
+                <button class="score_btn montserrat_extrabold" onclick="increment_home_1()"
+                    aria-label="Add 1 point to Home score">+1</button>
+            </div>
+            <div id="score_timer_container" class="timer_container">
+                <div class="score_btn_container">
+                    <button class="timer_btn montserrat_extrabold" onclick="increment_minute_1()"
+                        aria-label="Add 1 minute to the timer">+1</button>
+                    <button class="timer_btn montserrat_extrabold" onclick="decrement_minute_1()"
+                        aria-label="Subtract 1 minute from the timer">-1</button>
+                </div>
+                <div>
+                    <h3 class="timer_header montserrat_extrabold"><span id="minute_num" aria-live="polite"
+                            aria-atomic="true">00</span>:<span id="second_num" aria-live="polite"
+                            aria-atomic="true">00</span></h3>
+                </div>
+                <div class="score_btn_container">
+                    <button class="timer_btn montserrat_extrabold" onclick="increment_second_1()"
+                        aria-label="Add 1 second to the timer">+1</button>
+                    <button class="timer_btn montserrat_extrabold" onclick="decrement_second_1()"
+                        aria-label="Subtract 1 second from the timer">-1</button>
+                </div>
+            </div>
+            <div id="score_away_container" class="score_container montserrat_extrabold">
+                <button class="score_btn montserrat_extrabold" onclick="decrement_away_1()"
+                    aria-label="Subtract 1 point from Away score">-1</button>
+                <h3 id="score_away_num" class="score_header montserrat_extrabold" aria-live="polite" aria-atomic="true">
+                    0</h3>
+                <button class="score_btn montserrat_extrabold" onclick="increment_away_1()"
+                    aria-label="Add 1 point to Away score">+1</button>
+            </div>
+        </div>
+        <!-- Stats -->
+        <div id="stats_container">
+            <div id="stats_home_container" class="stats_container">
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Shots</h4>
+                    <h4 id="home_shot_num" class="stat_num montserrat_extrabold" aria-live="polite" aria-atomic="true">0
+                    </h4>
+                </div>
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Corners</h4>
+                    <h4 id="home_corner_num" class="stat_num montserrat_extrabold" aria-live="polite"
+                        aria-atomic="true">0</h4>
+                </div>
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Saves</h4>
+                    <h4 id="home_save_num" class="stat_num montserrat_extrabold" aria-live="polite" aria-atomic="true">0
+                    </h4>
+                </div>
+            </div>
+            <div id="period_container">
+                <h4 id="period_header" class="montserrat_extrabold" aria-live="polite" aria-atomic="true">Period</h4>
+                <h4 id="period_num" class="montserrat_black" aria-live="polite" aria-atomic="true">1</h4>
+            </div>
+            <div id="stats_away_container" class="stats_container">
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Shots</h4>
+                    <h4 id="away_shot_num" class="stat_num montserrat_extrabold" aria-live="polite" aria-atomic="true">0
+                    </h4>
+                </div>
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Corners</h4>
+                    <h4 id="away_corner_num" class="stat_num montserrat_extrabold" aria-live="polite"
+                        aria-atomic="true">0</h4>
+                </div>
+                <div class="stats_inner_container">
+                    <h4 class="stat_header saira_italic_semibold">Saves</h4>
+                    <h4 id="away_save_num" class="stat_num montserrat_extrabold" aria-live="polite" aria-atomic="true">0
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <!-- Stats Buttons -->
+        <div id="stats_button_container">
+            <div id="stats_home_button_container" class="stats_button_container">
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_shots_home_1()"
+                        aria-label="Subtract 1 shot from Home team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_shots_home_1()"
+                        aria-label="Add 1 shot to Home team">+1</button>
+                </div>
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_corners_home_1()"
+                        aria-label="Subtract 1 corner from Home team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_corners_home_1()"
+                        aria-label="Add 1 corner to Home team">+1</button>
+                </div>
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_saves_home_1()"
+                        aria-label="Subtract 1 save from Home team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_saves_home_1()"
+                        aria-label="Add 1 save to Home team">+1</button>
+                </div>
+            </div>
+            <div id="period_num_container">
+                <button id="period_1_btn" class="period_btn btn_active montserrat_extrabold" onclick="period_1()"
+                    aria-label="Set period to 1" aria-pressed="true">1</button>
+                <button id="period_2_btn" class="period_btn montserrat_extrabold" onclick="period_2()"
+                    aria-label="Set period to 2" aria-pressed="false">2</button>
+                <button id="period_1_extra_time_btn" class="period_btn montserrat_extrabold"
+                    onclick="period_1_extra_time()" aria-label="Set to first extra time" aria-pressed="false">1 ET</button>
+                <button id="period_2_extra_time_btn" class="period_btn montserrat_extrabold"
+                    onclick="period_2_extra_time()" aria-label="Set to second extra time" aria-pressed="false">2 ET</button>
+                <button id="penalties_btn" class="period_btn montserrat_extrabold" onclick="penalties()"
+                    aria-label="Set to penalties" aria-pressed="false">PEN</button>
+            </div>
+            <div id="stats_away_button_container" class="stats_button_container">
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_shots_away_1()"
+                        aria-label="Subtract 1 shot from Away team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_shots_away_1()"
+                        aria-label="Add 1 shot to Away team">+1</button>
+                </div>
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_corners_away_1()"
+                        aria-label="Subtract 1 corner from Away team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_corners_away_1()"
+                        aria-label="Add 1 corner to Away team">+1</button>
+                </div>
+                <div class="stats_num_inner_container">
+                    <button class="state_btn montserrat_extrabold" onclick="decrement_saves_away_1()"
+                        aria-label="Subtract 1 save from Away team">-1</button>
+                    <button class="state_btn montserrat_extrabold" onclick="increment_saves_away_1()"
+                        aria-label="Add 1 save to Away team">+1</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
